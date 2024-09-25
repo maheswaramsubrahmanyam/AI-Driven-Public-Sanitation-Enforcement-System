@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Sanitation Enforcement System</title>
+    <link rel="stylesheet" href="webapplication.css">
+    <style>
+        #videoElement {
+            width: 600px;
+            height: 450px;
+            border: 2px solid black;
+            display: none; 
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap');
+
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background: #4CAF50;
+    padding: 10px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 10px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+}
+
+/* Hero Section */
+.hero {
+    background: url('https://res.cloudinary.com/divvthkh8/image/upload/v1727256922/Designer_1_ti1shb.png') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-content h1 {
+    color: rgb(49, 206, 78);
+    font-size: 6rem;
+}
+
+.hero-content p {
+    color: rgb(255, 255, 255);
+    font-size:25px;
+    margin-bottom: 20px;
+    font-weight: bolder;
+}
+
+.btn {
+    background: #333;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.btn:hover {
+    background: #4CAF50;
+}
+
+/* Upload Section */
+.upload-section {
+    padding: 50px 20px;
+    background: #fff;
+    text-align: center;
+}
+
+input[type="file"],
+input[type="text"] {
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+}
+
+#uploadResult {
+    margin-top: 20px;
+    color: green;
+}
+
+/* Reports Section */
+.reports-section {
+    background: #f9f9f9;
+    padding: 50px 20px;
+}
+
+#reportList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.report-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+/* Admin Dashboard */
+.admin-section {
+    padding: 50px 20px;
+    background: white;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table,
+th,
+td {
+    border: 1px solid #ddd;
+}
+
+th,
+td {
+    padding: 15px;
+    text-align: left;
+}
+
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+.marquee {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.card {
+    display: inline-block;
+    width: 200px;
+    height: 300px;
+    margin: 10px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: #fff;
+}
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav>
+            <div class="logo">CleanCity</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#upload">Upload</a></li>
+                <li><a href="#reports">Reports</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="#capture">Capture</a></li>
+                <li><a href="#admin">Admin Dashboard</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to CleanCity</h1>
+            <p>Together, we can build a cleaner and healthier environment. Report public violations and help us keep the city clean!</p>
+            <a href="#upload" class="btn">Report Violation</a>
+        </div>
+    </section>
+<!-- This is the Slide Show Images section-->
+<section>
+    <div class="marquee container-fluid">
+        <marquee behavior="scroll" direction="left" scrollamount="7" loop="infinite">
+            <div class="card">
+                <img src="https://res.cloudinary.com/divvthkh8/image/upload/v1727258360/img2_y6htma.jpg" alt="Image 1">
+            </div>
+            <div class="card">
+                <img src="https://res.cloudinary.com/divvthkh8/image/upload/v1727258360/img5_db13xr.jpg" alt="Image 2">
+            </div>
+            <div class="card">
+                <img src="https://res.cloudinary.com/divvthkh8/image/upload/v1727258360/img3_b23ldp.jpg" alt="Image 3">
+            </div>
+            <div class="card">
+                <img src="https://res.cloudinary.com/divvthkh8/image/upload/v1727258361/img6_cxf3rv.jpg" alt="Image 4">
+            </div>
+            <div class="card">
+                <img src="https://res.cloudinary.com/divvthkh8/image/upload/v1727258361/img7_kmvpqv.jpg" alt="Image 5">
+            </div>
+            <div class="card">
+                <img src="https://res.cloudinary.com/divvthkh8/image/upload/v1727258360/img4_cjaleq.jpg" alt="Image 6">
+            </div>
+            <div class="card">
+                <img src="https://asiasociety.org/sites/default/files/styles/1200w/public/I/India_MainPissing.jpg" alt="Image 7">
+            </div>
+            <div class="card">
+                <img src="https://csrbox.org/news/15035477773500.jpg" alt="Image 8">
+            </div>
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUy_9QJoMpUhQZCVykcHJgfdHFG7TqByUWJA&s" alt="Image 9">
+            </div>
+            <div class="card">
+                <img src="https://cdn.punchng.com/wp-content/uploads/2019/12/03202537/open-defecation1.fw_.png" alt="Image 10">
+            </div>
+            <div class="card">
+                <img src="https://w.ndtvimg.com/sites/3/2017/06/01154019/Water-and-Sanitation-problems.jpg" alt="Image 1">
+            </div>
+            <div class="card">
+                <img src="https://res.cloudinary.com/divvthkh8/image/upload/v1727266107/IMG10_gx26fa.jpg" alt="Image 2">
+            </div>
+            <div class="card">
+                <img src="https://res.cloudinary.com/divvthkh8/image/upload/v1727266267/img11_tujigg.jpg" alt="Image 3">
+            </div>
+            <div class="card">
+                <img src="https://res.cloudinary.com/divvthkh8/image/upload/v1727258362/imh6_uoxsd7.jpg" alt="Image 5">
+            </div>
+            
+        </marquee>
+    </div>
+
+</section>
+    <!-- Image Upload Section -->
+    <section id="upload" class="upload-section">
+        <div class="container">
+            <h2>Upload Image of Violation</h2>
+            <form id="uploadForm">
+                <input type="file" id="violationImage" accept="image/*" required>
+                <input type="text" id="location" placeholder="Enter Location" required>
+                <button type="submit" class="btn">Upload</button>
+            </form>
+            <div id="uploadResult"></div>
+        </div>
+    </section>
+
+    <!-- Reports Section -->
+    <section id="reports" class="reports-section">
+        <div class="container">
+            <h2>Recent Violations</h2>
+            <div id="reportList">
+                <!-- Dynamic reports will be shown here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Dashboard Section -->
+    <section id="admin" class="admin-section">
+        <div class="container">
+            <h2>Admin Dashboard</h2>
+            <p>Review and manage reported violations, fines, and payment statuses.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Violation</th>
+                        <th>Location</th>
+                        <th>Status</th>
+                        <th>Fine</th>
+                    </tr>
+                </thead>
+                <tbody id="adminTable">
+                    <!-- Admin data will go here -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="capture" class="capture-section">
+        <div class="container">
+            <h2>Live Face Detection</h2>
+            <button id="startCaptureBtn" class="btn">Start Face Detection</button>
+            <video id="videoElement" autoplay title="capture violation Images">hello</video>
+            <script>
+                const video = document.getElementById('videoElement');
+                const startCaptureBtn = document.getElementById('startCaptureBtn');
+
+                // Function to start video stream and face detection
+                function startFaceDetection() {
+                    navigator.mediaDevices.getUserMedia({ video: {} })
+                        .then(stream => {
+                            video.srcObject = stream;
+                            video.style.display = 'block'; // Show video when capturing starts
+                        })
+                        .catch(err => console.error('Error accessing camera:', err));
+
+                    // Load FaceAPI models
+                    Promise.all([
+                        faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
+                        faceapi.nets.faceLandmark68Net.loadFromUri('/models'),
+                        faceapi.nets.faceRecognitionNet.loadFromUri('/models')
+                    ]).then(() => {
+                        video.addEventListener('play', () => {
+                            const canvas = faceapi.createCanvasFromMedia(video);
+                            document.body.append(canvas);
+
+                            const displaySize = { width: video.width, height: video.height };
+                            faceapi.matchDimensions(canvas, displaySize);
+
+                            setInterval(async () => {
+                                const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
+                                    .withFaceLandmarks().withFaceDescriptors();
+
+                                const resizedDetections = faceapi.resizeResults(detections, displaySize);
+                                canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+
+                                faceapi.draw.drawDetections(canvas, resizedDetections);
+                                faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
+                            }, 100);
+                        });
+                    });
+                }
+
+                // Attach event listener to the button
+                startCaptureBtn.addEventListener('click', startFaceDetection);
+            </script>
+        </div>
+    </section>
+
+    <section>
+        <div class="marquee container-fluid">
+            <marquee behavior="scroll" direction="right" scrollamount="7" loop="infinite">
+                <div class="card">
+                    <img src="https://res.cloudinary.com/divvthkh8/image/upload/v1727258360/img2_y6htma.jpg" alt="Image 1">
+                </div>
+                <div class="card">
+                    <img src="https://res.cloudinary.com/divvthkh8/image/upload/v1727258360/img5_db13xr.jpg" alt="Image 2">
+                </div>
+                <div class="card">
+                    <img src="https://res.cloudinary.com/divvthkh8/image/upload/v1727258360/img3_b23ldp.jpg" alt="Image 3">
+                </div>
+                <div class="card">
+                    <img src="https://res.cloudinary.com/divvthkh8/image/upload/v1727258361/img6_cxf3rv.jpg" alt="Image 4">
+                </div>
+                <div class="card">
+                    <img src="https://res.cloudinary.com/divvthkh8/image/upload/v1727258361/img7_kmvpqv.jpg" alt="Image 5">
+                </div>
+                <div class="card">
+                    <img src="https://res.cloudinary.com/divvthkh8/image/upload/v1727258360/img4_cjaleq.jpg" alt="Image 6">
+                </div>
+                <div class="card">
+                    <img src="https://asiasociety.org/sites/default/files/styles/1200w/public/I/India_MainPissing.jpg" alt="Image 7">
+                </div>
+                <div class="card">
+                    <img src="https://csrbox.org/news/15035477773500.jpg" alt="Image 8">
+                </div>
+                <div class="card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUy_9QJoMpUhQZCVykcHJgfdHFG7TqByUWJA&s" alt="Image 9">
+                </div>
+                <div class="card">
+                    <img src="https://cdn.punchng.com/wp-content/uploads/2019/12/03202537/open-defecation1.fw_.png" alt="Image 10">
+                </div>
+                <div class="card">
+                    <img src="https://w.ndtvimg.com/sites/3/2017/06/01154019/Water-and-Sanitation-problems.jpg" alt="Image 1">
+                </div>
+                <div class="card">
+                    <img src="https://res.cloudinary.com/divvthkh8/image/upload/v1727266107/IMG10_gx26fa.jpg" alt="Image 2">
+                </div>
+                <div class="card">
+                    <img src="https://res.cloudinary.com/divvthkh8/image/upload/v1727266267/img11_tujigg.jpg" alt="Image 3">
+                </div>
+                <div class="card">
+                    <img src="https://res.cloudinary.com/divvthkh8/image/upload/v1727258362/imh6_uoxsd7.jpg" alt="Image 5">
+                </div>
+                
+            </marquee>
+        </div>
+    
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>CleanCity © 2024 | Developed by <a href="https://www.linkedin.com/in/maheswaram-subrahmanyam-361238275/" style="color: whitesmoke;">Maheswaram Subrahmanyam </a> with innovation for a cleaner world</p>
+    </footer>
+
+    <!-- External JS -->
+    <script >
+        // Upload Functionality
+document.getElementById("uploadForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const image = document.getElementById("violationImage").files[0];
+    const location = document.getElementById("location").value;
+
+    if (image && location) {
+        document.getElementById("uploadResult").textContent = "Violation report successfully uploaded!";
+
+        // Add report to report section (for demo purpose)
+        addReport(image.name, location);
+    } else {
+        document.getElementById("uploadResult").textContent = "Please provide both an image and a location!";
+    }
+});
+
+// Add report to report section
+function addReport(imageName, location) {
+    const reportList = document.getElementById("reportList");
+    const reportCard = document.createElement("div");
+    reportCard.className = "report-card";
+    reportCard.innerHTML = `
+    <h3>Violation: ${imageName}</h3>
+    <p>Location: ${location}</p>
+    <p>Status: Under Review</p>
+  `;
+    reportList.appendChild(reportCard);
+}
+
+// Admin Dashboard Simulation
+const violations = [{
+        id: 1,
+        violation: "toilet_litter.jpg",
+        location: "Main Road",
+        status: "Pending",
+        fine: 100
+    },
+    {
+        id: 2,
+        violation: "littering.jpg",
+        location: "Park Street",
+        status: "Reviewed",
+        fine: 100
+    },
+];
+
+violations.forEach(violation => {
+    const row = `<tr>
+    <td>${violation.id}</td>
+    <td>${violation.violation}</td>
+    <td>${violation.location}</td>
+    <td>${violation.status}</td>
+    <td>${violation.fine}</td>
+  </tr>`;
+    document.getElementById("adminTable").innerHTML += row;
+});
+    </script>
+</body>
+
+</html>
